@@ -35,6 +35,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x1nay"]
 size = Vector2(85, 54)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fi5i3"]
+size = Vector2(85, 54)
+
 [node name="enemy2" type="CharacterBody2D" unique_id=777372646]
 script = ExtResource("1_fi5i3")
 
@@ -45,6 +48,13 @@ sprite_frames = SubResource("SpriteFrames_x1nay")
 animation = &"enemy2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=638541248]
-position = Vector2(-0.5, 25)
+position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_x1nay")
+debug_color = Color(0.975185, 0, 0.4247808, 0.41960785)
+
+[node name="hitbox" type="Area2D" parent="." unique_id=428195397]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="hitbox" unique_id=2019438718]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_fi5i3")
 debug_color = Color(0.975185, 0, 0.4247808, 0.41960785)

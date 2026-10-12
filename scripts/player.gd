@@ -1,37 +1,42 @@
 extends CharacterBody2D
 
+@export var maxHealth: int = 3
 @export var speed = 150.0
-@onready var animations: AnimationPlayer
+@onready var animations: AnimationPlayer = $AnimationPlayer
 @onready var previousDirection: String = "Down"
+var currentHealth: int = maxHealth
 
-func _physics_process(delta: float) -> void:
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+func handleInput():
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = direction * speed
-	
-	move_and_slide()
 
-enum {
-	IDLE, MOVING, DYING, DEAD
-}
+func handleCollision(): 
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+
+func _physics_process(delta: float) -> void:
+	handleInput()
+	move_and_slide()
+	handleCollision()
+	updateAnimation()
 
 func updateAnimation():
-	var direction = previousDirection
+	var direction = "Down"
+	if velocity.x < 0: direction = "Left"
+	elif velocity.x > 0: direction = "Right"
+	elif velocity.y < 0: direction = "Up"
+	
+	animations.play("walk" + direction)
 
-	if velocity.x < 0:
-		direction = "Left"
-	elif velocity.x > 0:
-		direction = "Right"
-	elif velocity.y < 0:
-		direction = "Up"
-	elif velocity.y > 0:
-		direction = "Down"
 
-	if velocity.length() == 0:
-		animations.play("idle" + previousDirection)
-	else:
-		previousDirection = direction
-		animations.play("walk" + direction)
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	if area.name == "hitbox":
+		currentHealth -= 1
+		if currentHealth < 0:
+			currentHealth = maxHealth
+	print_debug(currentHealth)
 
-var current_state = IDLE
+func heal(amount: int) -> void:
+	currentHealth = min(currentHealth ++ amount, maxHealth)
+	print_debug(currentHealth)

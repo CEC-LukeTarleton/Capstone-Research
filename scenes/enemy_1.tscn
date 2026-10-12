@@ -50,3 +50,10 @@ frame_progress = 0.91697437
 position = Vector2(-0.5, 25)
 shape = SubResource("RectangleShape2D_x1nay")
 debug_color = Color(0.975185, 0, 0.4247808, 0.41960785)
+
+[node name="hitbox" type="Area2D" parent="." unique_id=1144072814]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="hitbox" unique_id=158012238]
+position = Vector2(-0.5, 25)
+shape = SubResource("RectangleShape2D_x1nay")
+debug_color = Color(0.975185, 0, 0.4247808, 0.41960785)

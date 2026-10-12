@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cd6mjdecaub7f"]
+
+[ext_resource type="Texture2D" uid="uid://41wllglawdf8" path="res://assets/Objects/Items.png" id="1_4e1ds"]
+[ext_resource type="Script" uid="uid://c5526j6fb4w57" path="res://scripts/health_restore.gd" id="1_a38km"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x1nay"]
+size = Vector2(1.8518515, 1.748971)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1nay"]
+atlas = ExtResource("1_4e1ds")
+region = Rect2(130, 17, 12, 13)
+
+[node name="healthRestore" type="Area2D" unique_id=603774170]
+scale = Vector2(9.720001, 9.720001)
+script = ExtResource("1_a38km")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=204092237]
+position = Vector2(0.102880634, 0.051440317)
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_x1nay")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=888302789]
+z_index = 1
+texture_filter = 1
+scale = Vector2(0.20826863, 0.20826863)
+texture = SubResource("AtlasTexture_x1nay")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

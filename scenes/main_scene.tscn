@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://clmht44c7em7a" path="res://assets/FlowerAndGrass.png" id="5_c16ls"]
 [ext_resource type="PackedScene" uid="uid://cpk8nl5jhsvdx" path="res://scenes/enemy_1.tscn" id="6_18nlu"]
 [ext_resource type="PackedScene" uid="uid://cr6k8qigo0k5p" path="res://scenes/enemy_2.tscn" id="7_18nlu"]
+[ext_resource type="PackedScene" uid="uid://cd6mjdecaub7f" path="res://scenes/health_restore.tscn" id="9_c1pb6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c1pb6"]
 texture = ExtResource("2_rt2n2")
@@ -615,3 +616,12 @@ limit_left = -445
 limit_top = -222
 limit_right = 302
 limit_bottom = 206
+
+[node name="healthRestore" parent="." unique_id=603774170 instance=ExtResource("9_c1pb6")]
+position = Vector2(-64, -1)
+
+[node name="healthRestore2" parent="." unique_id=1324112761 instance=ExtResource("9_c1pb6")]
+position = Vector2(18, -81)
+
+[node name="healthRestore3" parent="." unique_id=550088803 instance=ExtResource("9_c1pb6")]
+position = Vector2(-184, -27)
