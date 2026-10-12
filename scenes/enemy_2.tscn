@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://cr6k8qigo0k5p"]
+
+[ext_resource type="Script" uid="uid://tooym8pm4l3h" path="res://scripts/enemy_1.gd" id="1_fi5i3"]
+[ext_resource type="Texture2D" uid="uid://buh5uxvvy3s78" path="res://assets/Player & Npc/Slime.png" id="2_oh86k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4ywr"]
+atlas = ExtResource("2_oh86k")
+region = Rect2(0, 51, 32, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4auq"]
+atlas = ExtResource("2_oh86k")
+region = Rect2(32, 51, 32, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdqbe"]
+atlas = ExtResource("2_oh86k")
+region = Rect2(64, 51, 32, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x1nay"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4ywr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4auq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdqbe")
+}],
+"loop": 1,
+"name": &"enemy2",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x1nay"]
+size = Vector2(85, 54)
+
+[node name="enemy2" type="CharacterBody2D" unique_id=777372646]
+script = ExtResource("1_fi5i3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1352179070]
+texture_filter = 1
+scale = Vector2(7.5599995, 7.5599995)
+sprite_frames = SubResource("SpriteFrames_x1nay")
+animation = &"enemy2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=638541248]
+position = Vector2(-0.5, 25)
+shape = SubResource("RectangleShape2D_x1nay")
+debug_color = Color(0.975185, 0, 0.4247808, 0.41960785)
